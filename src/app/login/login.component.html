@@ -1,12 +1,14 @@
 <div class="main_container">
 <div class="main_color_container">
 <div class="login_container">
-    <h4>Welcome to Yes Bank</h4>
-    <h5>{{min}}</h5>
-    <input type="text" clmara ass="input_tags" id="acno" [value]="accno" (change)="accnoChange($event)" placeholder="Enter account no"><br>
-    <input type="text" class="input_tags" id="uname" placeholder="Enter name"><br>
-    <input type="text" class="input_tags" id="pwd" (change)="passwordChange($event)" placeholder="Enter password"><br>
+    <h2>Welcome to Yes Bank</h2>
+    <p>{{min}}</p>
+    
+    <input type="text" clmara ass="input_tags" id="acno"  [(ngModel)]="accno" placeholder="Enter account no"><br>
+    <input type="text" class="input_tags" id="pwd" [(ngModel)]="pswd" placeholder="Enter password"><br>
     <button class="btn" (click)="login()">Login</button><br>
+    <a routerLink="register">Forgot Password?</a>
+    <button class="btn" (click)="registration()">Create new Account</button>
 </div>
 </div>
 </div>
