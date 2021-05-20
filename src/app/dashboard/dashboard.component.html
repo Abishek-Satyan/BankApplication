@@ -1,13 +1,30 @@
 <div class="main_container">
     <div class="main_color_container">
         <div class="login_container">
-            <h2>Welcome to Yes Bank</h2>
-            <p>{{ min }}</p>
-            <form >
-                <input type="button" value="View Balance"><br>
-                <input type="button" value="Deposit"><br>
-                <input type="button" value="Withdraw"><br>
-            </form>
-        </div>
+            <div class="row withdraw">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <form (ngSubmit)="withdraw()" >       
+                    <input type="text" class="input_tags" id="wacno"  [(ngModel)]="waccno" name="account number" placeholder="Enter account no"><br>
+                    <input type="text" class="input_tags" id="wpwd" [(ngModel)]="wpswd" name="password" placeholder="Enter password"><br>
+                    <input type="text" class="input_tags" id="Withdraw_amount" [(ngModel)]="wamount" name="amount" placeholder="Enter amount"><br>
+                    <input type="submit" value="Withdraw">
+                    </form></div>
+                <div class="col-4"></div>
+            </div>
+            </div>
+            <div class="login_container">
+            <div class="row Deposit">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <form (ngSubmit)="deposit()" >       
+                    <input type="text" class="input_tags" id="acno"  [(ngModel)]="daccno" name="account number" placeholder="Enter account no"><br>
+                    <input type="text" class="input_tags" id="pwd" [(ngModel)]="dpswd" name="password" placeholder="Enter password"><br>
+                    <input type="text" class="input_tags" id="Deposit_amount" [(ngModel)]="damount" name="amount" placeholder="Enter amount"><br>
+                    <input type="submit" value="Deposit">
+                    </form></div>
+                <div class="col-4"></div>
+            </div>
+          </div>
     </div>
 </div>

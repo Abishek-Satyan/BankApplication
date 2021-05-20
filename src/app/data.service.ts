@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
 })
 export class DataService {
   useraccountDetails={
-    100:{accno:100,username:"userone",password:"user1",balane:10000},
-    101:{accno:101,username:"usertwo",password:"user2",balane:11000},
-    102:{accno:102,username:"userthree",password:"user3",balane:15000},
+    100:{accno:100,username:"userone",password:"user1",balance:10000},
+    101:{accno:101,username:"usertwo",password:"user2",balance:11000},
+    102:{accno:102,username:"userthree",password:"user3",balance:15000},
   }
   constructor(private route:Router) { }
   registration(uname,accno,pswd){
@@ -46,5 +46,49 @@ export class DataService {
       }
     }
   
+  }
+  deposit(accno,pswd,amt){
+    var amount=parseInt(amt)
+    let user=this.useraccountDetails
+    if(accno in user)
+    {
+      if(pswd==user[accno]["password"]){
+        user[accno]["balance"]+=amount
+        console.log(user[accno]["balance"])
+        return user[accno]["balance"]
+       
+        
+      }
+      else{
+        alert("invalid incorrect password")
+        return false
+      }
+    }
+    else{
+      alert("invalid account number")
+      return false
+    }
+  }
+  withdraw(accno,pswd,amt){
+    var amount=parseInt(amt)
+    let user=this.useraccountDetails
+    if(accno in user)
+    {
+      if(pswd==user[accno]["password"]){
+        user[accno]["balance"]-=amount
+        console.log(user[accno]["balance"])
+        return user[accno]["balance"]
+       
+        
+      }
+      else{
+        alert("invalid incorrect password")
+        return false
+      }
+    }
+    else{
+      alert("invalid account number")
+      return false
+    }
   }
 }
