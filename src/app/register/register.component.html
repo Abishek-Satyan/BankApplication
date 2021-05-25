@@ -3,12 +3,13 @@
     <div class="login_container">
         <h2>Welcome to Yes Bank</h2>
         <p>{{min}}</p>
-        <form (ngSubmit)="registration()">
-        <input type="text" class="input_tags" id="uname"  [(ngModel)]="uname" name="username" placeholder="Enter user name"><br>
-        <input type="text" class="input_tags" id="acno"  [(ngModel)]="accno" name="account number" placeholder="Enter account no"><br>
-        <input type="text" class="input_tags" id="pwd" [(ngModel)]="pswd" name="password" placeholder="Enter password"><br>
-        <input type="submit" value="Create new Account">
+        <form [formGroup]="registerForm">
+        <input type="text" class="input_tags" id="uname" formControlName="uname"  placeholder="Enter user name"><br>
+        <div class="error_message">Invalid Username</div>
+        <input type="text" class="input_tags" id="acno"  formControlName="accno" placeholder="Enter account no"><br>
+        <input type="text" class="input_tags" id="pwd"  formControlName="pswd" placeholder="Enter password"><br>
+        <input type="submit"  (click)="registration()" value="Create new Account">
         </form>
-    </div>
-    </div>
-    </div>
+ </div>
+ </div>
+ </div>

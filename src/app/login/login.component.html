@@ -3,10 +3,10 @@
 <div class="login_container">
     <h2>Welcome to Yes Bank</h2>
     <p>{{min}}</p>
-    <form (ngSubmit)="login()">
-    <input type="text" class="input_tags" id="acno"  [(ngModel)]="accno" name="accno" placeholder="Enter account no"><br>
-    <input type="text" class="input_tags" id="pwd" [(ngModel)]="pswd" name="pswd" placeholder="Enter password"><br>
-    <input type="submit" value="Login"><br>
+    <form [formGroup]="loginForm">
+    <input type="text" class="input_tags" id="acno" formControlName="accno"  placeholder="Enter account no"><br>
+    <input type="text" class="input_tags" id="pwd" formControlName="pswd"  placeholder="Enter password"><br>
+    <input type="submit" (click)="login()" value="Login"><br>
     </form>
     <a routerLink="register">Forgot Password?</a>
     <input type="submit" (click)="registration()" value="Create new account">
