@@ -1,13 +1,16 @@
 <div class="main_container">
+
     <div class="main_color_container">
     <div class="login_container">
         <h2>Welcome to Yes Bank</h2>
         <p>{{min}}</p>
         <form [formGroup]="registerForm">
         <input type="text" class="input_tags" id="uname" formControlName="uname"  placeholder="Enter user name"><br>
-        <div class="error_message">Invalid Username</div>
+        <div *ngIf="(registerForm.get('uname')?.touched || registerForm.get('uname')?.dirty) && registerForm.get('uname')?.errors " class="error_message">Invalid Username</div>
         <input type="text" class="input_tags" id="acno"  formControlName="accno" placeholder="Enter account no"><br>
+        <div *ngIf="(registerForm.get('accno')?.touched || registerForm.get('accno')?.dirty) && registerForm.get('accno')?.errors " class="error_message">Invalid account number</div>
         <input type="text" class="input_tags" id="pwd"  formControlName="pswd" placeholder="Enter password"><br>
+        <div *ngIf="(registerForm.get('pswd')?.touched || registerForm.get('pswd')?.dirty) && registerForm.get('pswd')?.errors " class="error_message">Invalid account number</div>
         <input type="submit"  (click)="registration()" value="Create new Account">
         </form>
  </div>

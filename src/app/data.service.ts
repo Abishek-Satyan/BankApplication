@@ -10,7 +10,22 @@ export class DataService {
     101:{accno:101,username:"usertwo",password:"user2",balance:11000},
     102:{accno:102,username:"userthree",password:"user3",balance:15000},
   }
-  constructor(private route:Router) { }
+  currentuser=""
+  constructor(private route:Router) { this.getdata() }
+  savedata(){
+    localStorage.setItem("accountDetails",JSON.stringify(this.useraccountDetails))
+    if(this.currentuser)
+    {localStorage.setItem("currentuser",JSON.stringify(this.currentuser))}
+     
+  }
+  getdata(){
+    if(localStorage.getItem("accountDetails")){
+    this.useraccountDetails=JSON.parse(localStorage.getItem("accountDetails"))
+  }
+    if(localStorage.getItem("currentuser")){
+    this.currentuser=JSON.parse(localStorage.getItem("currentuser"))
+    }
+  }
   registration(uname,accno,pswd){
     
     var userdata=this.useraccountDetails
@@ -25,6 +40,7 @@ export class DataService {
         balance:0
       }
       alert("Registered successfully")
+      this.savedata();
       this.route.navigateByUrl("")
     }
    
@@ -36,7 +52,9 @@ export class DataService {
     if(accno in users)
     {
       if(pswd==users[accno]["password"]){
+        this.currentuser=users[accno]["username"]
         alert("login Success");
+        this.savedata();
         this.route.navigateByUrl("dashboard")
         
       }
@@ -55,6 +73,7 @@ export class DataService {
       if(pswd==user[accno]["password"]){
         user[accno]["balance"]+=amount
         console.log(user[accno]["balance"])
+        this.savedata();
         return user[accno]["balance"]
        
         
@@ -77,6 +96,7 @@ export class DataService {
       if(pswd==user[accno]["password"]){
         user[accno]["balance"]-=amount
         console.log(user[accno]["balance"])
+        this.savedata();
         return user[accno]["balance"]
        
         

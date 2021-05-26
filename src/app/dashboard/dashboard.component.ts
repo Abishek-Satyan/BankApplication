@@ -7,13 +7,14 @@ import { DataService } from '../data.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  min="your perfect banking partner"
+  min="your perfect banking partner" 
   daccno=""
   dpswd=""
   damount=""
   waccno=""
   wpswd=""
   wamount=""
+  user=this.dataservice.currentuser
   constructor(private dataservice:DataService) { }
 
   ngOnInit(): void {
